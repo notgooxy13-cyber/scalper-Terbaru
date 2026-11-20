@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b1220">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>GOLD SCALPER V2 — Market Viewer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div><div class="eyebrow">MARKET OBSERVER · PAPER / EDUCATIONAL</div><h1>GOLD SCALPER <span>V2</span></h1></div>
+  <div id="connection" class="pill wait">Menghubungkan…</div>
+</header>
+<main>
+  <section class="quote card">
+    <div><div class="muted">XAU / USD · SPOT INDICATIVE</div><div id="price" class="price">—</div><div id="updated" class="muted">Menunggu data harga…</div></div>
+    <div class="quote-side"><div class="muted">Perubahan sejak sampel pertama</div><div id="change" class="change">—</div><div id="source" class="source">Sumber: Gold API</div></div>
+  </section>
+
+  <section class="card chart-card">
+    <div class="section-head"><div><h2>Grafik candlestick</h2><p class="muted">Candle dibentuk dari sampel harga yang dikumpulkan aplikasi.</p></div></div>
+    <nav class="tabs" aria-label="Timeframe">
+      <button data-tf="1" class="active">M1</button><button data-tf="5">M5</button><button data-tf="15">M15</button><button data-tf="60">H1</button>
+    </nav>
+    <div class="chart-wrap"><canvas id="chart" aria-label="Grafik candlestick XAUUSD"></canvas><div id="chart-empty">Mengumpulkan sampel harga untuk membentuk candle…</div></div>
+    <div class="legend"><span><i class="up"></i> Naik</span><span><i class="down"></i> Turun</span><span id="candle-count">0 candle</span></div>
+  </section>
+
+  <section class="grid">
+    <article class="card"><div class="muted">EMA 20</div><strong id="ema20">—</strong></article>
+    <article class="card"><div class="muted">EMA 50</div><strong id="ema50">—</strong></article>
+    <article class="card"><div class="muted">EMA 200</div><strong id="ema200">—</strong></article>
+    <article class="card"><div class="muted">RSI 14</div><strong id="rsi">—</strong></article>
+    <article class="card"><div class="muted">ATR 14</div><strong id="atr">—</strong></article>
+    <article class="card"><div class="muted">ADX 14</div><strong id="adx">Perlu data OHLC lebih lengkap</strong></article>
+  </section>
+
+  <section class="card note">
+    <h2>Status data</h2>
+    <p id="status-text">Aplikasi akan mengambil harga spot publik dan menyusun candle lokal.</p>
+    <p class="warning">Data spot indikatif bukan kuotasi Exness/MT5. M1–H1 adalah candle hasil pengumpulan data aplikasi, bukan candle historis broker. Saat pertama dibuka, grafik memerlukan waktu untuk terisi.</p>
+  </section>
+
+  <section class="card note">
+    <h2>Batasan aplikasi</h2>
+    <ul>
+      <li>Hanya menampilkan data dan indikator edukasi.</li>
+      <li>Tidak ada tombol BUY/SELL, order, login, atau koneksi akun broker.</li>
+      <li>Tidak menghasilkan rekomendasi transaksi atau jaminan hasil.</li>
+      <li>Harga diperbarui sesuai ketersediaan penyedia data; jika API gagal, status akan menunjukkan terputus.</li>
+    </ul>
+    <button id="refresh" class="secondary">Perbarui harga sekarang</button>
+  </section>
+</main>
+<footer>GOLD SCALPER V2 · Market viewer edukasi · Bukan alat trading</footer>
+<script src="app.js"></script>
+</body>
+</html>
